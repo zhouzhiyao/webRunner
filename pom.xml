@@ -11,7 +11,7 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.sourceEncoding>GBK</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -28,11 +28,11 @@
             <version>2.9.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.chinaweal</groupId>
-            <artifactId>chinaweal-core</artifactId>
-            <version>1.0.8-SNAPSHOT</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.chinaweal</groupId>-->
+            <!--<artifactId>chinaweal-core</artifactId>-->
+            <!--<version>1.0.8-SNAPSHOT</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>

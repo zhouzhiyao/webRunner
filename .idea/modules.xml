@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://D://webRunner/webRunner.iml" filepath="D://webRunner/webRunner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webRunner.iml" filepath="$PROJECT_DIR$/webRunner.iml" />
     </modules>
   </component>
 </project>
