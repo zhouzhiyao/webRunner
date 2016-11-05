@@ -1,15 +1,11 @@
 package com.chinaweal;
 
-import com.chinaweal.webrun.dao.impl.TestCaseDaoImpl;
-import com.chinaweal.webrun.entity.TestCase;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -45,42 +41,6 @@ public class AutoWebRunner {
     }
 
     /**
-     * 触发特定页面的操作
-     *
-     * @param pageIndex
-     */
-    public void runPage(String pageIndex) {
-        try {
-            init();
-
-            ArrayList<TestCase> testCases = new TestCaseDaoImpl().getTestCases(pageIndex);
-            runPage(testCases);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            browser.close();
-        }
-    }
-
-
-    /**
-     * 测试用例以page为单位，分 路径引导信息集 和 测试用例信息集
-     * 路径引导信息集：为操作顺序、操作方式、下一步路径之类的信息
-     * 测试用例信息集：业务测试用例集
-     *
-     * @param testCases 测试用例集
-     * @return
-     */
-    public void runPage(ArrayList<TestCase> testCases) {
-        for (TestCase testCase : testCases) {
-            WebElement element = findElement(browser, testCase.getAttributeType(), testCase.getAttributeValue());
-            testElement(element, testCase.getTagName(), testCase.getInputValue());
-            logInfo(testCase);
-        }
-    }
-
-
-    /**
      * 各种不同元素的定位
      *
      * @param browser
@@ -114,38 +74,5 @@ public class AutoWebRunner {
         } else if (tagName.equalsIgnoreCase("button")) {
             element.click();
         }
-    }
-
-    //下拉列表框（easyUI）
-    public void executeJS(WebDriver browser, TestCase testCase) {
-        JavascriptExecutor js = (JavascriptExecutor) browser;
-        String script = "";
-        if (testCase.getAttributeType().equalsIgnoreCase("id")) {
-            String scriptTemplate = " $('#%s').omCombo({ value: %s})";
-            script = String.format(scriptTemplate, testCase.getAttributeValue(), testCase.getInputValue());
-        }
-
-        js.executeScript(script);
-    }
-
-    /**
-     * 测试过程实时输出
-     */
-    public void logInfo(TestCase testCase) {
-        System.out.println(testCase.getDisplayName() + " -> " + testCase.getInputValue());
-    }
-
-    /**
-     * 从指定页面抓取信息
-     *
-     * @param pageIndex
-     * @param testCaseID
-     * @return
-     */
-    public String grabInfoFromPage(String pageIndex, String testCaseID) {
-        TestCase testCase = new TestCaseDaoImpl().getTestCaseByID(testCaseID);
-        WebElement webElement = findElement(browser, testCase.getAttributeType(), testCase.getAttributeValue());
-        String info = webElement.getText();
-        return info;
     }
 }
