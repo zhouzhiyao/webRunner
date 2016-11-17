@@ -7,10 +7,12 @@ package com.chinaweal.auto.db;
  * Time: 下午6:26
  */
 public class TestCaseModel {
+    //元素类型
+    private String elementType;
     //定位符
     private String identifier;
     //定位方式
-    private String means;
+    private String byWay;
     //Test value
     private String testValue;
     //Expected value
@@ -20,6 +22,14 @@ public class TestCaseModel {
     //Template
     private String templateLocator;
 
+    public String getElementType() {
+        return elementType;
+    }
+
+    public void setElementType(String elementType) {
+        this.elementType = elementType;
+    }
+
     public String getIdentifier() {
         return identifier;
     }
@@ -28,12 +38,12 @@ public class TestCaseModel {
         this.identifier = identifier;
     }
 
-    public String getMeans() {
-        return means;
+    public String getByWay() {
+        return byWay;
     }
 
-    public void setMeans(String means) {
-        this.means = means;
+    public void setByWay(String byWay) {
+        this.byWay = byWay;
     }
 
     public String getTestValue() {

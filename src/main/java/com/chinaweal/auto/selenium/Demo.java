@@ -1,6 +1,5 @@
 package com.chinaweal.auto.selenium;
 
-import com.chinaweal.auto.ui.element.ElementDelegate;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -12,12 +11,11 @@ public class Demo {
         driver.get("http://localhost:9888/cops/");
 
         String elementType = "text";
+        String identifierType = "id";
         String identifier = "username";
         String testValue = "admin";
         String expectedValue = "";
 
-        ElementDelegate delegate = new ElementDelegate(driver, elementType, identifier, testValue, expectedValue);
-        delegate.doTest();
 
         //页面元素实体类 action test script
 

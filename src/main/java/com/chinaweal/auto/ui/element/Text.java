@@ -5,12 +5,12 @@ import org.openqa.selenium.WebElement;
 /**
  * Created by Lain on 2016/11/5.
  */
-public class Text implements Element {
+public class Text implements AutoElement {
 
-    private WebElement element;
+    private WebElement webElement;
 
-    public Text(WebElement element) {
-        this.element = element;
+    public Text(WebElement webElement) {
+        this.webElement = webElement;
     }
 
     public void doTest(String testValue, String expectedValue){
@@ -18,8 +18,8 @@ public class Text implements Element {
     }
 
     public void input(String testValue) {
-        element.clear();
-        element.sendKeys(testValue);
+        this.webElement.clear();
+        this.webElement.sendKeys(testValue);
     }
 
 }
